@@ -21,7 +21,7 @@ console.log(getFullName("Hector", "Zaragoza")) // We want to write our functions
 
 // INTERFACES
 // Creating objects
-const user: {name: string; age: number} = {
+const user1: {name: string; age: number} = {
     name: "Hector",
     age: 34
 }
@@ -55,3 +55,30 @@ console.log(playerOne.getMessage())
 // Suffix interface name with Interface
 
 // TYPES AND UNIONS
+// Union operator
+let username: string = "alex"
+// What if we want the prop to be either string or number
+let pageName: string | number = "1"
+// The pipe is called a union
+let errorMessage: string | null = null
+// Common use of union is to start with variables at null
+
+// TYPE ALIASES in TS
+type ID = string
+type PopularTag = string
+type MaybePopularTag = PopularTag | null // Combining Types and Unions
+
+interface UserInterface {
+    id: ID
+    name: string
+    surname: string
+}
+
+const PopularTags: PopularTag[] = ['dragon', 'coffee']
+
+const dragonsTag: MaybePopularTag = "dragon"
+
+let user: UserInterface | null = null
+
+let someProp: string | number | null | undefined | string[] | object // Doing this is messy
+
