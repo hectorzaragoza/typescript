@@ -82,3 +82,45 @@ let user: UserInterface | null = null
 
 let someProp: string | number | null | undefined | string[] | object // Doing this is messy
 
+// ANY - NEVER - VOID - UNKNOWN
+// VOID KEYWORD
+const doSomething = (): void => {
+    console.log("doSomething")
+}
+// If you don't return something, the function returns void! You can specify void
+// Void is a set of undefined and null
+// Only use void to specify that you are not returning something from a function
+
+// ANY KEYWORD is one of the worst
+// Because it basically turns off support for Types, avoid using ANY at any cost.
+// Any is not a solution but the start of bigger problems.
+
+// NEVER KEYWORD
+// A function with Never cannot have a reacheable end. A function with never will never end
+
+// Unknown KEYWORD
+let vAny: any = 10
+let vUnknown: unknown = 10
+
+let s1:  string = vAny
+let s2: string = vUnknown as string// We cannot assign unknown directly to other types unless you specify unknown as that type via type assertion "as"
+// console.log(vAny.foo())
+// console.log(vUnknown.foo())
+
+// Type assertion - convert one type to another
+let pageNumber: string = '1'
+let numericPageNumber: number = (pageNumber as unknown) as number
+
+// WORKING WITH DOM
+let page: any = "1"
+let pageNumber1 = page as string // Type assertion
+
+const someElement = document.querySelector(".foo") as HTMLInputElement
+// TS doesn't know anything about our markup...
+console.log('someElement', someElement.value)
+// Element is the highest class in the hierarchy
+// Do not convert someElement to any to try and bypass errors
+someElement.addEventListener('blur', (event) => {
+    const target = event.target as HTMLInputElement
+    console.log('event', target.value)
+})
