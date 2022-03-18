@@ -40,4 +40,21 @@ Cons:
 ## Learn TypeScript - Full Course for Beginners from freeCodeCamp.org
 - TS is the most popular static typing extension for JS.
 - Two main reasons why TS is better than JS.
-    Erros can be catched earlier than with JS. at Compile time (in the editor or console) as oppposed to at runtime
+    1) Errors can be catched earlier than with JS. at Compile time (in the editor or console) as oppposed to at runtime
+    2) Difficult to maintain or scale JS projects (TS helps us to work with entities and properties associated with that entity(user))
+- Browser can't read TS so TS needs to be transpiled to JS to run in the browser.
+- You have to think more about how you architect your application by thinking about how data types interact with each other.
+
+### How to install TypeScript tools
+- install nodeJS
+- install TS, because you need CLI tools to transpile TS to JS
+- npm i typscript, run tsc -v to see TS command line version
+- VS Code has support for TS out of the box.
+- need to run tsc tsfile.ts to transpile TS to JS. TS defaults to transpiling to ES3.
+- you can transpile in watch mode: tsc tsfile.ts -w
+- tsconfig.json allows us to configure TS
+    Can provide some parameters through CLI tools
+- with this, you can structure your source files and see ("watch") the output as you develop.
+
+### Type Definitions
+- 
