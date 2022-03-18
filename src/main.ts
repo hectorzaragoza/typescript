@@ -68,11 +68,11 @@ type ID = string
 type PopularTag = string
 type MaybePopularTag = PopularTag | null // Combining Types and Unions
 
-interface UserInterface {
-    id: ID
-    name: string
-    surname: string
-}
+// interface UserInterface {
+//     id: ID
+//     name: string
+//     surname: string
+// }
 
 const PopularTags: PopularTag[] = ['dragon', 'coffee']
 
@@ -124,3 +124,110 @@ someElement.addEventListener('blur', (event) => {
     const target = event.target as HTMLInputElement
     console.log('event', target.value)
 })
+
+// CLASSES in TS
+// Classes are sugar to work with prototypes
+
+// interface UserInterface {
+//     getFullname(): string
+// }
+class User implements UserInterface {
+    firstName: string
+    lastName: string
+    readonly unchangeableName: string
+    static readonly maxAge = 50 // STatic properties are only available on superclass and not on subclasses
+
+    constructor(firstName: string, lastName: string) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.unchangeableName = firstName
+    }
+
+    changeUnchangeableName(): void {
+        this.unchangeableName = "foo"
+    }
+
+    // getFullName(): string {
+    //     return this.firstName + ' ' + this.lastName
+    // }
+}
+
+const userClass = new User("Hector", "Zaragoza") // userClass is of type User which is a class
+console.log(userClass.getFullName()) // Things are public by default in TS
+// You can use public, private, protected only exists within TS...so there are no checks on runtime with JS because of the transpilation process
+
+// You can also use the keyword READONLY
+
+// STATIC Properties
+// Class inheritance
+
+class Admin extends User {
+    private editor: string
+    setEditor(editor: string): void {
+        this.editor = editor
+    }
+    getEditor(): string {
+        return this.editor
+    }
+}
+
+const admin = new Admin("foo", "bar")
+console.log(admin.firstName)
+console.log(admin.getEditor())
+
+// Generics in TS
+const addId = <T extends object>(obj: T) => {
+    const id = Math.random().toString(16)
+    return {
+        ...obj,
+        id
+    }
+}
+
+interface UserInterface<T, V> {
+    name: string;
+    data: T;
+    meta: V;
+}
+
+const userGeneric: UserInterface<{meta: string}, string> = {
+    name: "Jack",
+    data: {
+        meta: "foo"
+    },
+    meta: "bar"
+}
+
+const userTwoGeneric: UserInterface<string[]> = {
+    name: "John",
+    data: ["foo", "bar"]
+}
+
+const result = addId<UserInterface>(user)
+console.log("result", result)
+// Explicit declarations are always better
+// Generics for Interfaces
+// With generics, you can pass in multiple data types
+
+// ENUMS in TS
+// enumerables, 
+const statuses = {
+    notStarted: 0,
+    inProgress: 1,
+    done: 2
+}
+
+console.log(statuses.inProgress)
+// using enumerables now
+enum Status {
+    NotStarted,
+    InProgress,
+    Done
+}
+
+let notStartedStatus: Status = Status.NotStarted
+notStartedStatus = Status.Done
+// The values of the properties in an enum start at 0 and are assigned respectively
+console.log(Status.InProgress)
+// We can use enum as a value and data type
+// You can assign values to the enum properties for example NotStarted = "not started"
