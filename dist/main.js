@@ -14,3 +14,26 @@ console.log(getFullName("Hector", "Zaragoza")); // We want to write our function
 // You can also specify the type that a function will return.
 // * It's SAFER TO SPECIFY TYPES because of the enforcement rules.
 // INTERFACES
+// Creating objects
+var user = {
+    name: "Hector",
+    age: 34
+};
+// TS out of the box can understand our objects and read our properties and infer types.
+var user2 = {
+    name: "Jack"
+};
+var playerOne = {
+    name: "Hector",
+    age: 34,
+    getMessage: function () {
+        return "hello" + name;
+    }
+};
+// By default, all properties defined in an interface are mandatory. But, you can add a "?" after the name and before the colon to make it optional.
+// Interfaces give us the best autocomplete, when you want to access a property, it will list those available associated with that particular interface
+console.log(playerOne.getMessage());
+// Name your interfaces something different than classes
+// Prefix your interfaces with I
+// Suffix interface name with Interface
+// TYPES AND UNIONS

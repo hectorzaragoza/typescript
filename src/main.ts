@@ -20,3 +20,38 @@ console.log(getFullName("Hector", "Zaragoza")) // We want to write our functions
 // * It's SAFER TO SPECIFY TYPES because of the enforcement rules.
 
 // INTERFACES
+// Creating objects
+const user: {name: string; age: number} = {
+    name: "Hector",
+    age: 34
+}
+// TS out of the box can understand our objects and read our properties and infer types.
+const user2: {name: string; age: number} = {
+    name: "Jack",
+}
+// JS doesn't tell us that user2 is missing an age property
+// But, we don't want to specify the properties and its type each time we create an object, so we should use Interfaces
+// Interfaces in TS help us to describe entities.
+
+interface Player {
+    name: string;
+    age: number;
+    getMessage(): string
+}
+
+const playerOne: Player = {
+    name: "Hector",
+    age: 34,
+    getMessage() {
+        return "hello" + name;
+    }
+}
+// By default, all properties defined in an interface are mandatory. But, you can add a "?" after the name and before the colon to make it optional.
+// Interfaces give us the best autocomplete, when you want to access a property, it will list those available associated with that particular interface
+
+console.log(playerOne.getMessage())
+// Name your interfaces something different than classes
+// Prefix your interfaces with I
+// Suffix interface name with Interface
+
+// TYPES AND UNIONS
