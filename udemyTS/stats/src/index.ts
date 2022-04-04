@@ -1,20 +1,11 @@
-import { CsvFileReader } from './CsvFileReader'
+import { MatchReader } from './MatchReader';
+import { MatchResult } from './MatchResult';
 
 // An issue with this is that our source of data is hardcoded in here.
 // We can alternatively, create a csvFileReader class...which could include two properties and one method, filename, data, read()
 
-const reader = new CsvFileReader('football.csv');
+const reader = new MatchReader('football.csv');
 reader.read();
-
-// enum - enumeration
-// it is an object that stores closely related values
-// An enum is for the most part, to signal to other engineers that this is a collection of closely related values
-// When you create an enum, you also create a new type of that enums name, in this case, type of MatchResult
-enum MatchResult {
-    HomeWin = 'H',
-    AwayWin = 'A',
-    Draw = 'D'
-}
 
 let manUnitedWins = 0;
 
