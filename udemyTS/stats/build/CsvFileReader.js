@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CsvFileReader = void 0;
 const fs_1 = __importDefault(require("fs"));
 const utils_1 = require("./utils");
+
 class CsvFileReader {
     constructor(filename) {
         this.filename = filename;
