@@ -13,5 +13,6 @@ Composition:
 Clarify misconceptions: "favor object composition over class inheritance"
 Composition - Instead of a window being a rectangle, it should have a rectangle (or a circle) This fuels code reuse. (A class that references to another object - a window class with a dimension property that references another class(rectangle, circle, etc.))
 - JS community is confusing composition for multiple inheritance.
-- One (main) object has references to other objects. The main object, delegates certain specific behaviors to those other objects.
+- One (main, can also be thought of as a coordinator) object has references to other objects. The main object, delegates certain specific behaviors to those other objects.
+- Composition and Delegation.
 
