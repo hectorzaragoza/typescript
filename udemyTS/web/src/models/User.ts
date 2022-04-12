@@ -6,31 +6,17 @@ interface UserProps {
     age?: number
 }
 
-// Type alias, empty function that has no arguments and no return value (Type annotation for a function)
-type Callback = () => void
+
 
 export class User {
     constructor(private data: UserProps) {}
-    events: {[key: string]: Callback[]} = {}
+    
     get(propName: string): string | number {
         return this.data[propName]
     }
     set(update: UserProps): void {
         //update property values map to datas and will override them using Object.assign.
         Object.assign(this.data, update)
-    }
-    // This is how you indicate that the type is a function that takes no argument and returns no value
-    on(eventName: string, callback: Callback): void {
-        const handlers = this.events[eventName] || []
-        handlers.push(callback)
-        this.events[eventName] = handlers
-    }
-    trigger(eventName: string): void {
-        const handlers = this.events[eventName]
-        if(!handlers || handlers.length === 0) return
-        handlers.forEach(callback => {
-            callback();
-        })
     }
 
     fetch(): void {
