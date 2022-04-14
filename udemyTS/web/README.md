@@ -11,3 +11,5 @@ Generic classes - customize the type of "data" coming into the class when instan
 
 When using a generic, TS doesn't know what properties that generic type will eventually return, so trying to call a property on that generic type (before it has been defined) will produce an error. Satisfy the requirement by having the generic type extend an interface that has the property you are trying to reference in the generic class.
     But, any instantiation of that generic class will have to satisfy the interface!
+
+In TS, strings can be types. All object keys are strings. Therefore, object keys can be types.
