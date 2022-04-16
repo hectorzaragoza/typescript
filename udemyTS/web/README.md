@@ -13,3 +13,5 @@ When using a generic, TS doesn't know what properties that generic type will eve
     But, any instantiation of that generic class will have to satisfy the interface!
 
 In TS, strings can be types. All object keys are strings. Therefore, object keys can be types.
+
+Composition and Delegation go hand in hand. Direct passthrough of arguments is passing arguments in the instantiation of a class to its embedded class for delegation.
